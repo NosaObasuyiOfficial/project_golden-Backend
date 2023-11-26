@@ -69,7 +69,8 @@ if(checking_if_user_exists){
                 res.status(200).json({
                     message:`LOGIN SUCCESSFUL!`,
                     account_type: checking_if_user_exists.dataValues.account_type,
-                    login_token: onabill_login_token
+                    login_token: onabill_login_token,
+                    login_proceed: "true"
                 })
 
             }else{

@@ -15,35 +15,31 @@ export const lastName = Joi.string().trim().required()
         'any.required': 'Email is required'
     })
 
- export const phoneNumber = Joi.number().required().min(100000).max(200000000000000)
+ export const phoneNumber = Joi.number().required().min(100000).max(2000000000000000)
     .messages({
         'number.base': 'Phone number must be a number',
         'any.required': 'Please confirm phone number',
     })
 
- export const retype_phoneNumber = Joi.number().required().min(100000).max(200000000000000)
+ export const retype_phoneNumber = Joi.number().required().min(100000).max(2000000000000000)
     .messages({
         'number.base': 'Phone number must be a number',
         'any.required': 'Please confirm phone number'
     })
 
  export const password = Joi.string().trim().min(7).max(14)
-    .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)
     .required()
     .messages({
       'string.base': 'Password must be a string',
       'string.min': 'Password must be at least 7 characters long',
-      'string.pattern.base': 'Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character',
       'any.required': 'Password is required',
     })
 
   export const retype_password = Joi.string().trim().min(7).max(14)
-    .pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)
     .required()
     .messages({
       'string.base': 'Password must be a string',
       'string.min': 'Password must be at least 7 characters long',
-      'string.pattern.base': 'Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character',
       'any.required': 'Please confirm password',
     })
 
@@ -61,9 +57,10 @@ export const lastName = Joi.string().trim().required()
         'number.min': 'Number must be above NGN 999',
     })
 
- export const withdraw_amount = Joi.number().required()
+ export const withdraw_amount = Joi.number().required().min(499)
     .messages({
-        'any.required': 'withdraw amount is required'
+        'any.required': 'withdraw amount is required',
+        'number.min': 'Cannot withdraw less than NGN 500',
     })
 
  export const bankName = Joi.string().trim().required()
