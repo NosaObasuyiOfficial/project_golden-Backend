@@ -12,7 +12,6 @@ const { APP_SECRET } = process.env
 export const onabill_signup_controller = async(req:Request, res:Response) => {
 
   try{
-
         /*------------------VALIDATING SIGNUP INPUT DATA - (START)-------------------------*/
         let valid_input_firstName = firstName.validate(req.body.firstName);
         if (valid_input_firstName.error) {
@@ -34,7 +33,7 @@ export const onabill_signup_controller = async(req:Request, res:Response) => {
           return res.status(400).json({ message: `email - ${error_message}` });
         }
         const valid_email = valid_input_email.value;
-    
+
         let valid_input_phoneNumber = phoneNumber.validate(req.body.phoneNumber);
         if (valid_input_phoneNumber.error) {
           const error_message = valid_input_phoneNumber.error.details[0].message;
@@ -64,8 +63,6 @@ export const onabill_signup_controller = async(req:Request, res:Response) => {
         const valid_retype_password = valid_input_retype_password.value;
 
 /*------------------VALIDATING SIGN UP INPUT DATA - (STOP)-------------------------*/
-
-
 
 /*---------------------------- SIGNING USERS IN - (START) ----------------------------------*/
     
@@ -109,7 +106,8 @@ if( valid_phoneNumber !== valid_retype_phoneNumber || valid_password !== valid_r
 
       return res.status(200).json({
         user_data: new_user,
-        user_token: onabill_user_token
+        user_token: onabill_user_token,
+        signup_proceed: "true"
       })
 
     }else {
@@ -132,3 +130,7 @@ if( valid_phoneNumber !== valid_retype_phoneNumber || valid_password !== valid_r
     return res.status(500).json({ error: "Internal server error" });
   }
 }
+
+
+
+
