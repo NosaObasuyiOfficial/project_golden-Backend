@@ -25,6 +25,8 @@ try{
         })
         if(getting_customer_data?.dataValues){
 
+            if(getting_customer_data.dataValues.account_type !== "onabill_admin_101"){
+
             const client_wallet = await Client_Wallet.findOne({
                 where:{
                     phoneNumber: getting_customer_data.dataValues.phoneNumber
@@ -46,6 +48,12 @@ try{
             return res.status(200).json({
                 data: info
             })
+            }else{
+                const client_firstName = getting_customer_data.dataValues.firstName
+                return res.status(200).json({
+                    data: client_firstName
+                })
+            }
 
         }else{
             return res.status(400).json({

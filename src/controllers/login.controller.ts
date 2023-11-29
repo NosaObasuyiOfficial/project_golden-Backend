@@ -47,6 +47,7 @@ if(checking_if_user_exists){
             if(validate_user){
                 const new_user_id = checking_if_user_exists.dataValues.id
 
+                if(checking_if_user_exists.dataValues.account_type === "customer"){
                 /*------------------Create Wallet - (START)-----------------------------*/
                 const user_wallet = await Client_Wallet.findOne({
                     where: {
@@ -63,12 +64,14 @@ if(checking_if_user_exists){
                     })
                  }
                 /*------------------Create Wallet - (STOP)-----------------------------*/
+                }
 
                 const onabill_login_token = jwt.sign({ id: new_user_id }, APP_SECRET!, { expiresIn: "1d" });
 
                 res.status(200).json({
                     message:`LOGIN SUCCESSFUL!`,
                     account_type: checking_if_user_exists.dataValues.account_type,
+                    admin_firstName: checking_if_user_exists.dataValues.firstName,
                     login_token: onabill_login_token,
                     login_proceed: "true"
                 })

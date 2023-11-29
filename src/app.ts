@@ -9,6 +9,7 @@ import deposit_and_withdrawalRoute from './routes/deposit&withdrawal.route'
 import meterRoute from './routes/meter.route'
 import electricBillRoute from './routes/electric_bill.route'
 import getAllTransactionsRoute from './routes/get_all_transactions.route'
+import adminRoute from './routes/admin_routes.route'
 import cors from "cors";
 
 
@@ -32,6 +33,8 @@ app.use('/', deposit_and_withdrawalRoute)
 app.use('/', meterRoute)
 app.use('/', electricBillRoute)
 app.use('/', getAllTransactionsRoute)
+
+app.use('/admin', adminRoute)
 
 /*----Checking Database Connection-------------*/
 db.sync()

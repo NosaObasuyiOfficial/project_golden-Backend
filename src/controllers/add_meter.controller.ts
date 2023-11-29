@@ -65,6 +65,17 @@ export const add_meter = async(req:Request, res:Response) => {
 
             if (getting_customer_data?.dataValues) {
 
+              const meter_length = await Client_Meter_Details.findAll()
+              const max_meter_num =  meter_length.map((meter:any) => {
+               return meter.dataValues
+              })
+
+              if( max_meter_num.length > 10){
+               res.status(400).json({
+                 message: `Maximum meter no. reached.`
+                })
+              }else{
+
                const added_meter = await Client_Meter_Details.create({
                     id: v4(),
                     user_id: getting_customer_data.dataValues.id,
@@ -74,11 +85,12 @@ export const add_meter = async(req:Request, res:Response) => {
                     meter_type: valid_meter_type,
                     state: valid_state
                })
-
-               res.status(200).json({
-                message: `Meter Added!`,
-                data: added_meter
-               })
+            
+                 res.status(200).json({
+                  message: `Meter Added!`,
+                  data: added_meter
+                 })
+              }
 
             } else {
                 return res.status(400).json({
