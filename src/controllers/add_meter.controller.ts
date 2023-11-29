@@ -65,7 +65,19 @@ export const add_meter = async(req:Request, res:Response) => {
 
             if (getting_customer_data?.dataValues) {
 
-              const meter_length = await Client_Meter_Details.findAll()
+              const meter_length = await Client_Meter_Details.findAll({
+                where: {
+                  [Op.and]: [
+                    {
+                      phoneNumber: getting_customer_data.dataValues.phoneNumber
+                    },
+                    {
+                      user_id: customer_id 
+                    }
+                  ]
+                }
+              })
+
               const max_meter_num =  meter_length.map((meter:any) => {
                return meter.dataValues
               })
