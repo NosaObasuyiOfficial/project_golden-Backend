@@ -2,15 +2,9 @@ import { Request, Response } from "express";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import Onabill_Signup, { SIGNUP } from "../db_model/signup.model";
 
-import Electricity_Payment, {
-    BILL_TRANSACTION,
-  } from "../db_model/electric_bill.model";
-  import Deposit_Transactions, {
-    TRANSACTION,
-  } from "../db_model/Deposit_transactions.model";
-  import Withrawal_Transactions, {
-    TRANSACTIONS,
-  } from "../db_model/Withdrawal_transactions.model";
+import Electricity_Payment, { BILL_TRANSACTION } from "../db_model/electric_bill.model";
+import Deposit_Transactions, { TRANSACTION } from "../db_model/Deposit_transactions.model";
+import Withrawal_Transactions, { TRANSACTIONS } from "../db_model/Withdrawal_transactions.model";
 
 import { Op } from "sequelize";
 
@@ -117,7 +111,6 @@ export const all_client_transactions = async (req: Request, res: Response) => {
                     all_users_transactions.push(electricity)
                 })
 
-
                      const all_user_transactions = all_users_transactions.sort(
                        (a: any, b: any) => {
                          return (
@@ -131,7 +124,6 @@ export const all_client_transactions = async (req: Request, res: Response) => {
                        data: all_user_transactions
                      });
             }
-
         } else {
           return res.status(400).json({
             message: `You are not a registered user.`,
@@ -147,3 +139,25 @@ export const all_client_transactions = async (req: Request, res: Response) => {
       return res.status(500).json({ error: "Internal server error" });
     }
   };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

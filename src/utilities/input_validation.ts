@@ -104,6 +104,15 @@ export const lastName = Joi.string().trim().required()
     'any.required': 'Meter details is required'
  })
 
+ export const  tnx_id = Joi.string().trim().required()
+ .messages({
+    'any.required': 'Transaction ID is required'
+ })
+
+ export const  status = Joi.string().trim().required()
+ .messages({
+    'any.required': 'Transaction Status is required'
+ })
 
 
 

@@ -13,9 +13,9 @@ export type TRANSACTIONS = {
     state:boolean
 }
 
-class Withrawal_Transactions extends Model<TRANSACTIONS>{}
+class Withdrawal_Transactions extends Model<TRANSACTIONS>{}
 
-Withrawal_Transactions.init({
+Withdrawal_Transactions.init({
     id:{
         type: DataTypes.UUID,
         primaryKey: true,
@@ -55,7 +55,7 @@ Withrawal_Transactions.init({
     modelName: "Withrawal_Transactions"
 })
 
-export default Withrawal_Transactions
+export default Withdrawal_Transactions
 
 
 
