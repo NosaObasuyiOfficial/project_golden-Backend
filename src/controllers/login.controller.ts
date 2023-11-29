@@ -60,7 +60,7 @@ if(checking_if_user_exists){
                     await Client_Wallet.create({
                     id:v4(),
                     phoneNumber: checking_if_user_exists.dataValues.phoneNumber,
-                    wallet_balance: 10000
+                    wallet_balance: 0
                     })
                  }
                 /*------------------Create Wallet - (STOP)-----------------------------*/
